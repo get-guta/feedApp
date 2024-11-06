@@ -16,12 +16,12 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="\"Profile\"")
+@Table(name = "\"profile\"")
 public class Profile implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="\"profileId\"")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "\"profileId\"")
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private Integer profileId;
 	private String bio;
@@ -29,55 +29,68 @@ public class Profile implements Serializable {
 	private String country;
 	private String headline;
 
-	@Column(columnDefinition="TEXT")
+	@Column(columnDefinition = "TEXT")
 	private String picture;
 	@OneToOne
 	@JsonIgnore
-	@JoinColumn(name="\"userId\"")
+	@JoinColumn(name = "\"userId\"")
 	private User user;
-	
+
 	public Profile() {
 	}
-	
+
 	public Integer getProfileId() {
 		return profileId;
 	}
+
 	public void setProfileId(Integer profileId) {
 		this.profileId = profileId;
 	}
+
 	public String getBio() {
 		return bio;
 	}
+
 	public void setBio(String bio) {
 		this.bio = bio;
 	}
+
 	public String getCity() {
 		return city;
 	}
+
 	public void setCity(String city) {
 		this.city = city;
 	}
+
 	public String getCountry() {
 		return country;
 	}
+
 	public void setCountry(String country) {
 		this.country = country;
 	}
+
 	public String getHeadline() {
 		return headline;
 	}
+
 	public void setHeadline(String headline) {
 		this.headline = headline;
 	}
+
 	public String getPicture() {
 		return picture;
 	}
+
 	public void setPicture(String picture) {
 		this.picture = picture;
 	}
+
 	public User getUser() {
 		return user;
 	}
+
 	public void setUser(User user) {
 		this.user = user;
 	}
@@ -87,6 +100,5 @@ public class Profile implements Serializable {
 		return "Profile [profileId=" + profileId + ", bio=" + bio + ", city=" + city + ", country=" + country
 				+ ", headline=" + headline + ", picture=" + picture + ", user=" + user + "]";
 	}
-	
-	
+
 }

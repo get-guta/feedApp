@@ -21,54 +21,52 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
-
 @Entity
-@Table(name="user", schema = "public")
-public class User implements Serializable {   
+@Table(name = "user", schema = "public")
+public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="\"userId\"")
-	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "\"userId\"")
+
 	private Integer userId;
-	
-	@Column(name="\"firstName\"")
+
+	@Column(name = "\"firstName\"")
 	private String firstName;
-	    
-	@Column(name="\"lastName\"")
+
+	@Column(name = "\"lastName\"")
 	private String lastName;
 
 	private String username;
 
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private String password;
-	    
+
 	private String phone;
 
-	@Column(name="\"emailId\"")
+	@Column(name = "\"emailId\"")
 	private String emailId;
-	    
-	@Column(name="\"emailVerified\"")
+
+	@Column(name = "\"emailVerified\"")
 	private Boolean emailVerified;
-	    
-	@Column(name="\"createdOn\"")
+
+	@Column(name = "\"createdOn\"")
 	private Timestamp createdOn;
-	
-	
+
 	@JsonInclude(Include.NON_NULL)
-	@OneToOne(mappedBy="user", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Profile profile;
-	
+
 	@JsonIgnore
-	@OneToMany(mappedBy="user")
+	@OneToMany(mappedBy = "user")
 	private List<Feed> feeds;
 
 	@JsonIgnore
-	@OneToMany(mappedBy="user")
-	private List<FeedMetaData> feedMetaData;	
+	@OneToMany(mappedBy = "user")
+	private List<FeedMetaData> feedMetaData;
+
 	public User() {
 	}
-	
 
 	public Integer getUserId() {
 		return userId;
@@ -146,31 +144,25 @@ public class User implements Serializable {
 		return profile;
 	}
 
-
 	public void setProfile(Profile profile) {
 		this.profile = profile;
 	}
-
 
 	public List<Feed> getFeeds() {
 		return feeds;
 	}
 
-
 	public void setFeeds(List<Feed> feeds) {
 		this.feeds = feeds;
 	}
-
 
 	public List<FeedMetaData> getFeedMetaData() {
 		return feedMetaData;
 	}
 
-
 	public void setFeedMetaData(List<FeedMetaData> feedMetaData) {
 		this.feedMetaData = feedMetaData;
 	}
-
 
 	@Override
 	public String toString() {
@@ -178,15 +170,5 @@ public class User implements Serializable {
 				+ username + ", password=" + password + ", phone=" + phone + ", emailId=" + emailId + ", emailVerified="
 				+ emailVerified + ", createdOn=" + createdOn + "]";
 	}
-	
-	
+
 }
-
-
-
-
-
-
-
-
-
