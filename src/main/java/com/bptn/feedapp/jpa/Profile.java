@@ -19,7 +19,7 @@ import jakarta.persistence.Table;
 @Table(name = "\"profile\"")
 public class Profile implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "\"profileId\"")
@@ -32,7 +32,7 @@ public class Profile implements Serializable {
 
 	@Column(columnDefinition = "TEXT")
 	private String picture;
-	
+
 	@OneToOne
 	@JsonIgnore
 	@JoinColumn(name = "\"userId\"")

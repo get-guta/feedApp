@@ -1,8 +1,6 @@
 package com.bptn.feedapp.controller;
 
- import java.sql.Timestamp;
-import java.time.Instant;
-import java.util.List;
+ import java.util.List;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -44,26 +42,26 @@ public class UserController {
 		logger.debug("The testController() method was invoked!");
 		return "The FeedApp application is up and running";
 	}
-	@GetMapping("/{first}/{last}/{username}/{password}/{phone}/{emailId}")
-	public String createUser( @PathVariable String first, @PathVariable String last, @PathVariable String username, @PathVariable String password,  @PathVariable String phone, @PathVariable String emailId) {
-
-		User user = new User();
-        
-		user.setFirstName(first);
-		user.setLastName(last);
-		user.setUsername(username);
-		user.setPassword(password);
-		user.setPhone(phone);
-		user.setEmailId(emailId);
-		user.setEmailVerified(false);
-		user.setCreatedOn(Timestamp.from(Instant.now()));
-		        
-		logger.debug("The createUser() method was invoked!, user={}", user.toString());
-		        
-		this.userService.createUser(user);
-		        
-		return "User Created Successfully";
-	}
+//	@GetMapping("/{first}/{last}/{username}/{password}/{phone}/{emailId}")
+//	public String createUser( @PathVariable String first, @PathVariable String last, @PathVariable String username, @PathVariable String password,  @PathVariable String phone, @PathVariable String emailId) {
+//
+//		User user = new User();
+//        
+//		user.setFirstName(first);
+//		user.setLastName(last);
+//		user.setUsername(username);
+//		user.setPassword(password);
+//		user.setPhone(phone);
+//		user.setEmailId(emailId);
+//		user.setEmailVerified(false);
+//		user.setCreatedOn(Timestamp.from(Instant.now()));
+//		        
+//		logger.debug("The createUser() method was invoked!, user={}", user.toString());
+//		        
+//		this.userService.createUser(user);
+//		        
+//		return "User Created Successfully";
+//	}
 	@PostMapping("/signup")
 	public User signup(@RequestBody User user) {  
 		
