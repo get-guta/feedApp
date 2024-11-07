@@ -15,7 +15,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "\"FeedMetaData\"")
+@Table(name = "\"feedMetaData\"")
 public class FeedMetaData implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id

@@ -1,5 +1,7 @@
 package com.bptn.feedapp.service;
 
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,12 +20,23 @@ public class UserService {
 		return this.userRepository.findAll();
 	}
 
-	public Optional<User> findByUsername(String username)  {
-		return this.userRepository.findByUsername(username);	
-		}
+	public Optional<User> findByUsername(String username) {
+		return this.userRepository.findByUsername(username);
+	}
 
 	public void createUser(User user) {
 		this.userRepository.save(user);
+	}
+
+	public User signup(User user) {
+
+		user.setUsername(user.getUsername().toLowerCase());
+		user.setEmailId(user.getEmailId().toLowerCase());
+		user.setEmailVerified(false);
+		user.setCreatedOn(Timestamp.from(Instant.now()));
+		this.userRepository.save(user);
+		return user;
+
 	}
 
 }
