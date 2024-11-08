@@ -27,4 +27,5 @@ public class YamlPropertySourceFactory implements PropertySourceFactory {
         
         return factory.getObject();
     }
+    
 }

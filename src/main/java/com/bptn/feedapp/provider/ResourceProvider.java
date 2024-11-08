@@ -9,6 +9,7 @@ import com.bptn.feedapp.provider.factory.YamlPropertySourceFactory;
 @Component
 @PropertySource(value = "classpath:config.yml", factory = YamlPropertySourceFactory.class)
 public class ResourceProvider {
+	
 
 	@Value("${jwt.secret}")
 	private String jwtSecret;
@@ -18,7 +19,7 @@ public class ResourceProvider {
 
 	@Value("${jwt.issuer}")
 	private String jwtIssuer;
-
+    
 	@Value("${jwt.audience}")
 	private String jwtAudience;
 
@@ -30,13 +31,13 @@ public class ResourceProvider {
 
 	@Value("${client.url}")
 	private String clientUrl;
-
+    
 	@Value("${client.email.verify.param}")
 	private String clientVerifyParam;
 
 	@Value("${client.email.verify.expiration}")
 	private long clientVerifyExpiration;
-
+    
 	@Value("${client.email.reset.param}")
 	private String clientResetParam;
 
@@ -47,53 +48,50 @@ public class ResourceProvider {
 	private String[] h2ServerParams;
 
 	public String getJwtSecret() {
-		return jwtSecret;
+	return jwtSecret;
 	}
 
 	public long getJwtExpiration() {
-		return jwtExpiration;
+	return jwtExpiration;
 	}
 
 	public String getJwtIssuer() {
-		return jwtIssuer;
+	return jwtIssuer;
 	}
 
 	public String getJwtAudience() {
-		return jwtAudience;
+	return jwtAudience;
 	}
 
 	public String getJwtPrefix() {
-		return jwtPrefix;
+	return jwtPrefix;
 	}
 
 	public String[] getJwtExcludedUrls() {
-		return jwtExcludedUrls;
+	return jwtExcludedUrls;
 	}
 
 	public String getClientUrl() {
-		return clientUrl;
+	return clientUrl;
 	}
 
 	public String getClientVerifyParam() {
-		return clientVerifyParam;
+	return clientVerifyParam;
 	}
 
 	public long getClientVerifyExpiration() {
-		return clientVerifyExpiration;
+	return clientVerifyExpiration;
 	}
 
 	public String getClientResetParam() {
-		return clientResetParam;
+	return clientResetParam;
 	}
 
 	public long getClientResetExpiration() {
-		return clientResetExpiration;
+	return clientResetExpiration;
 	}
 
 	public String[] getH2ServerParams() {
-		return h2ServerParams;
+	return h2ServerParams;
 	}
-
-	
-	
 }

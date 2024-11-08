@@ -6,22 +6,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
 import com.bptn.feedapp.jpa.User;
 import com.bptn.feedapp.provider.ResourceProvider;
+import com.bptn.feedapp.security.JwtService;
 
 import jakarta.mail.internet.MimeMessage;
-import security.JwtService;
 
 @Service
-	public class EmailService {
+public class EmailService {
+
+	final Logger logger = LoggerFactory.getLogger(this.getClass());
+	
 	@Value("${spring.mail.username}")
 	private String emailFrom;
-	
-	final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
 	JwtService jwtService;
@@ -33,7 +35,7 @@ import security.JwtService;
 	TemplateEngine templateEngine;
 	    
 	@Autowired
-	JavaMailSender javaMailSender;  
+	JavaMailSender javaMailSender;
 	
 	private void sendEmail(User user, String clientParam, String templateName, String emailSubject, long expiration) {
 	     
@@ -67,5 +69,12 @@ import security.JwtService;
 	         
 	         this.logger.error("Error while Sending Email, Username: " + user.getUsername(), ex);
 	     }
-	}    
 	}
+	@Async
+	public void sendVerificationEmail(User user) {
+	     
+	 this.sendEmail(user, this.provider.getClientVerifyParam(),"verify_email", 
+	 String.format("Welcome %s %s",user.getFirstName(),user.getLastName()), 
+	                   this.provider.getClientVerifyExpiration());
+	}    
+}
