@@ -1,6 +1,6 @@
 package com.bptn.feedapp.controller;
 
- import java.util.List;
+import java.util.List;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -42,6 +42,7 @@ public class UserController {
 		logger.debug("The testController() method was invoked!");
 		return "The FeedApp application is up and running";
 	}
+
 //	@GetMapping("/{first}/{last}/{username}/{password}/{phone}/{emailId}")
 //	public String createUser( @PathVariable String first, @PathVariable String last, @PathVariable String username, @PathVariable String password,  @PathVariable String phone, @PathVariable String emailId) {
 //
@@ -63,13 +64,18 @@ public class UserController {
 //		return "User Created Successfully";
 //	}
 	@PostMapping("/signup")
-	public User signup(@RequestBody User user) {  
-		
+	public User signup(@RequestBody User user) {
+
 		logger.debug("Signing up, username: {}", user.getUsername());
 		return this.userService.signup(user);
 	}
-	
-	
+
+	@GetMapping("/verify/email")
+	public void verifyEmail() {
+
+		logger.debug("Verifying Email");
+		this.userService.verifyEmail();
+
+	}
+
 }
-
-
